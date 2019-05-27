@@ -37,6 +37,8 @@ public class main {
 			System.out.println("Enter the weight range:");
 			int w=scanner.nextInt();
 			System.out.println(matrixGraph.setWeight(w));
+			Graph MST=new Graph(matrixGraph.wheights);
+			MST.primMST();
 			matrixGraph.bfs(0);
 			matrixGraph.dfs(0);
 			System.out.println(matrixGraph.neighbors());

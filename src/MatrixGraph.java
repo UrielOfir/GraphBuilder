@@ -1,36 +1,8 @@
-import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.LinkedList;
-import java.util.PriorityQueue;
 import java.util.Queue;
-
-class Edge {
-		
-		int weight;
-		int vertices[]= new int[2];
-		public Edge(int _weight,int i,int j) {
-			weight=_weight;
-			vertices[0]=i;
-			vertices[1]=j;
-		}
-
-			class EdgeComparator implements Comparator<Edge>{ 
-            
-            // Overriding compare()method of Comparator  
-                        // for descending order of cgpa 
-            public int compare(Edge s1, Edge s2) { 
-                if (s1.weight < s2.weight) 
-                    return 1; 
-                else if (s1.weight > s2.weight) 
-                    return -1; 
-                                return 0; 
-                } 
-        } 
-}
 public class MatrixGraph {
 	  private boolean adjMatrix[][];
-      private int wheights[][];
-      PriorityQueue <Edge> edgesQueue = new PriorityQueue <Edge> ();
+	  public int wheights[][];
       private boolean visited[];
       private int numVertices, visitedNum=0,edgeCounter=0;
       private int rank[];
@@ -65,6 +37,7 @@ public class MatrixGraph {
         	  rank[i]=0;
       }
       
+      
       public String setWeight(int w) {
     	  if (w==0)
     		  return("you can't give 0");
@@ -73,13 +46,13 @@ public class MatrixGraph {
     		  for (int i = 0; i < numVertices; i++) {
     			  for (int j=i+1; j<numVertices;j++) {
     	                if (adjMatrix[i][j]==true) {
-    	                	wheights[i][j]=(int)(Math.random()*w);
+    	                	do
+    	                		wheights[i][j]=(int)(Math.random()*w);
+    	                	while (wheights[i][j]==0);
     	                	if (Math.random()<0.5)
     	                		wheights[i][j]=-wheights[i][j];
     	                	wheights[j][i]=wheights[i][j];
-    	                	Edge ij=new Edge(wheights[i][j],i,j);
-    	                //	edgesQueue.add(ij);
-    	                	
+    	                 	                    	                	
     	                }
     	                else
     	                	wheights[i][j]=0;
@@ -99,20 +72,9 @@ public class MatrixGraph {
     	  
       }
       
-      public String getMST() {
-    	  ArrayList<Edge> MST=new ArrayList<Edge>();
-    	  StringBuilder s= new StringBuilder();
-    	  for(int i=0;i<visited.length;i++)
-    		  visited[i]=false;
-    	  if(!edgesQueue.isEmpty()) {
-    		  edgesQueue.poll();  
-    	  }
-    	  
-    	  return s;
-      }
-      
- 
-      public void addEdge(int i, int j) {
+       
+    
+  public void addEdge(int i, int j) {
                 adjMatrix[i][j] = true;
                 adjMatrix[j][i] = true;
                 edgeCounter++;
