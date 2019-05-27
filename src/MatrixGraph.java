@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.LinkedList;
 import java.util.PriorityQueue;
@@ -13,7 +14,7 @@ class Edge {
 			vertices[1]=j;
 		}
 
-class EdgeComparator implements Comparator<Edge>{ 
+			class EdgeComparator implements Comparator<Edge>{ 
             
             // Overriding compare()method of Comparator  
                         // for descending order of cgpa 
@@ -25,10 +26,6 @@ class EdgeComparator implements Comparator<Edge>{
                                 return 0; 
                 } 
         } 
-		
-
-		
-
 }
 public class MatrixGraph {
 	  private boolean adjMatrix[][];
@@ -103,10 +100,13 @@ public class MatrixGraph {
       }
       
       public String getMST() {
-    	  Queue<Edge> 
+    	  ArrayList<Edge> MST=new ArrayList<Edge>();
     	  StringBuilder s= new StringBuilder();
     	  for(int i=0;i<visited.length;i++)
     		  visited[i]=false;
+    	  if(!edgesQueue.isEmpty()) {
+    		  edgesQueue.poll();  
+    	  }
     	  
     	  return s;
       }
