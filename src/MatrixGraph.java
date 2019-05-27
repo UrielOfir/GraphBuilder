@@ -81,7 +81,7 @@ public class MatrixGraph {
     	                		wheights[i][j]=-wheights[i][j];
     	                	wheights[j][i]=wheights[i][j];
     	                	Edge ij=new Edge(wheights[i][j],i,j);
-    	                	edgesQueue.add(ij);
+    	                //	edgesQueue.add(ij);
     	                	
     	                }
     	                else
@@ -96,12 +96,21 @@ public class MatrixGraph {
     	            }
     	            s.append("\n");
     		  }
-    		  System.out.println(edgesQueue.toString());
     		  return s.toString();
     	  }
     		  
     	  
       }
+      
+      public String getMST() {
+    	  Queue<Edge> 
+    	  StringBuilder s= new StringBuilder();
+    	  for(int i=0;i<visited.length;i++)
+    		  visited[i]=false;
+    	  
+    	  return s;
+      }
+      
  
       public void addEdge(int i, int j) {
                 adjMatrix[i][j] = true;
